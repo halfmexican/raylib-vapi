@@ -131,6 +131,15 @@ if get_option('examples') == true
 		],
 	)
 	executable(
+		'core_basic_screen_manager',
+		dependencies: [raylib_oop_dep],
+		sources: [
+			'src/examples/core/core_basic_screen_manager.vala',
+			'src/examples/meta/license.vala',
+			'src/examples/meta/version.vala',
+		],
+	)
+	executable(
 		'template',
 		dependencies: [raylib_oop_dep],
 		sources: [
