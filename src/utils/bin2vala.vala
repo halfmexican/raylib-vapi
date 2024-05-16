@@ -1,5 +1,7 @@
 /* This script creates a constant uint8 array of any file, for use with embedding
- * into code. */
+ * into code.
+ * If you want to use it, just run: valac bin2vala.vala and run the output.
+ */
 using GLib;
 
 public class Main : GLib.Object {
