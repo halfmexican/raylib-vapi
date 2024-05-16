@@ -156,7 +156,7 @@ namespace RaylibOOP {
 		}
 		/* Destroyer */
 		~Window() {
-			info("Destroying Window...");
+			debug("Destroying Window...");
 			Raylib.close_window();
 			numOfWindows--;
 		}
