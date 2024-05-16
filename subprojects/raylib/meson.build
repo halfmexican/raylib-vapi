@@ -50,7 +50,13 @@ if os == 'windows'
 		cc.find_library('gdi32', required: true),
 	]
 elif os == 'darwin'
-	error('OS not implemented.')
+	deps += [
+		dependency('OpenGL'),
+		dependency('Cocoa'),
+		dependency('IOKit'),
+		dependency('CoreAudio'),
+		dependency('CoreVideo'),
+	]
 else
 	deps += [
 		dependency('threads'),
