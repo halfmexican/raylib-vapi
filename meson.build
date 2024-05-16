@@ -47,6 +47,34 @@ elif cc.has_link_argument('-Wl,--compress-debug-sections=zlib') == true
 	)
 endif
 
+# Fixes error with lambda's on Clang (Maybe windows specific?)
+if cc.has_argument('-Wno-incompatible-function-pointer-types') == true
+	cc_arguments += '-Wno-incompatible-function-pointer-types'
+endif
+
+# Disables/Cleans up some warnings that vala produces. Possibly an issue with GCC 13 only?
+if cc.has_argument('-Wno-incompatible-pointer-types') == true
+	cc_arguments += '-Wno-incompatible-pointer-types'
+endif
+if cc.has_argument('-Wno-deprecated-declarations') == true
+	cc_arguments += '-Wno-deprecated-declarations'
+endif
+if cc.has_argument('-Wno-unused-function') == true
+	cc_arguments += '-Wno-unused-function'
+endif
+if cc.has_argument('-Wno-unused-variable') == true
+	cc_arguments += '-Wno-unused-variable'
+endif
+if cc.has_argument('-Wno-discarded-qualifiers') == true
+	cc_arguments += '-Wno-discarded-qualifiers'
+endif
+if cc.has_argument('-Wno-unused-but-set-variable') == true
+	cc_arguments += '-Wno-unused-but-set-variable'
+endif
+if cc.has_argument('-Wno-dangling-pointer') == true
+	cc_arguments += '-Wno-dangling-pointer'
+endif
+
 add_project_arguments (valac_arguments, language: 'vala')
 add_project_arguments (cc_arguments, language: 'c')
 
@@ -75,7 +103,7 @@ raylib_oop_lib = shared_library(
   dependencies: project_dependency,
 	install: true,
 	vala_args: ['--vapi-comments'],
-	version: version,
+#	version: version,
 	install_dir: [true, true, true],
 )
 
@@ -99,6 +127,7 @@ if get_option('examples') == true
 		sources: [
 			'src/examples/core/core_basic_window.vala',
 			'src/examples/meta/license.vala',
+			'src/examples/meta/version.vala',
 		],
 	)
 	executable(
