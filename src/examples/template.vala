@@ -27,7 +27,7 @@ public class Game : GLib.Application {
 		 * application_id would be: site.cool.Pong */
 		Object (
 			application_id: "com.example.GAME_NAME_HERE",
-			flags: ApplicationFlags.DEFAULT_FLAGS
+			flags: ApplicationFlags.FLAGS_NONE
 		);
 	}
 

@@ -30,7 +30,7 @@ public class Game : GLib.Application {
 	private Game() {
 		Object (
 			application_id: "io.github.lxmcf.RaylibOOP.core_basic_screen_manager",
-			flags: ApplicationFlags.DEFAULT_FLAGS
+			flags: ApplicationFlags.FLAGS_NONE
 		);
 	}
 

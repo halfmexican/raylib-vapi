@@ -24,7 +24,7 @@ public class BasicWindow : Application {
 	private BasicWindow() {
 		Object (
 			application_id: "io.github.lxmcf.RaylibOOP.core_basic_window",
-			flags: ApplicationFlags.DEFAULT_FLAGS
+			flags: ApplicationFlags.FLAGS_NONE
 		);
 	}
 

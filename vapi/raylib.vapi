@@ -1493,13 +1493,13 @@ namespace Raylib {
     // Gestures and Touch Handling Functions (Module: rgestures)
     //------------------------------------------------------------------------------------
     [CCode (cname = "SetGesturesEnabled")]
-    public static void set_gestures_enabled (Gesture flags);
+    public static void set_gestures_enabled (int flags);
 
     [CCode (cname = "IsGestureDetected")]
-    public static bool is_gesture_detected (Gesture gesture);
+    public static bool is_gesture_detected (int gesture);
 
     [CCode (cname = "GetGestureDetected")]
-    public static Gesture get_gesture_detected ();
+    public static int get_gesture_detected ();
 
     [CCode (cname = "GetGestureHoldDuration")]
     public static float get_gesture_hold_duration ();
