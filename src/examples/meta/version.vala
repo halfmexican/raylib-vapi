@@ -1,0 +1,1 @@
+const string VERSION = "5.0.0";
