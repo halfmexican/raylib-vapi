@@ -1,1 +1,1 @@
-const string VERSION = "5.0.0";
+const string VERSION = "v5.0.0";
