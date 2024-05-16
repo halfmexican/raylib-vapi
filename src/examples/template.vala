@@ -11,7 +11,7 @@
 using GLib;
 using RaylibOOP;
 
-const string VERSION = "v1.0\n";
+const string VERSION = "VERSION HERE\n";
 const string LICENSE = """
 LICENSE GOES HERE
 """;
@@ -22,8 +22,9 @@ public class Game : GLib.Application {
 	private TimeoutSource timeout;
 
 	private Game() {
-		/* The project doesn't really have a website to it's name. So I guess
-		 * I'll just use mine? */
+		/* GLib.Application properties. Set the application to a reverse DNS. If
+		 * your game is named Pong, and your website is cool.site. Then the'
+		 * application_id would be: site.cool.Pong */
 		Object (
 			application_id: "com.example.GAME_NAME_HERE",
 			flags: ApplicationFlags.FLAGS_NONE
@@ -49,6 +50,7 @@ public class Game : GLib.Application {
 		return(true);
 	}
 
+	/* Handle Command Line Args */
 	public override int handle_local_options(VariantDict args) {
 		/* Print Version and Exit */
 		if(args.contains("version")) {
@@ -89,7 +91,7 @@ public class Game : GLib.Application {
 	public static int main(string[] args) {
 		/* Create GLib.Application */
 		var app = new Game();
-		/* Handle Args */
+		/* Add Command Line Options */
 		app.add_main_option("version", 'v', GLib.OptionFlags.NONE, GLib.OptionArg.NONE, "Displays program's version.", null);
 		app.add_main_option("license", 'l', GLib.OptionFlags.NONE, GLib.OptionArg.NONE, "Displays program's license.", null);
 		/* Run Application */
