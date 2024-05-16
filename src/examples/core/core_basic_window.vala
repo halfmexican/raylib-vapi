@@ -16,19 +16,15 @@
 using GLib;
 using RaylibOOP;
 
-const string VERSION = "v1.0\n";
-
 public class BasicWindow : Application {
 	private Window window;
 	private MainLoop loop;
 	private TimeoutSource timeout;
 
 	private BasicWindow() {
-		/* The project doesn't really have a website to it's name. So I guess
-		 * I'll just use mine? */
 		Object (
-			application_id: "net.iotib.RaylibOOP.core_basic_window",
-			flags: ApplicationFlags.FLAGS_NONE
+			application_id: "io.github.lxmcf.RaylibOOP.core_basic_window",
+			flags: ApplicationFlags.DEFAULT_FLAGS
 		);
 	}
 
