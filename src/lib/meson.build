@@ -1,5 +1,6 @@
 raylib_oop_src = [
 	'src/lib/Shapes/Vector2.vala',
+	'src/lib/Shapes/Rectangle.vala',
 	'src/lib/Window.vala',
 	'src/lib/Color.vala',
 	'src/lib/Util.vala',

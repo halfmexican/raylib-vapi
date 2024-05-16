@@ -18,12 +18,12 @@ public class Game : GLib.Application {
 	private MainLoop loop;
 	private TimeoutSource timeout;
 
-	private int framesCounter = 0;
+	private int framesCounter = 0; /* To later figure out if 2 seconds has passed. */
 	private enum GameScreen {
 		LOGO = 0,
 		TITLE = 1,
 		GAMEPLAY = 2,
-		ENDING = 3
+		ENDING = 3,
 	}
 	private int currentScreen = GameScreen.LOGO;
 
@@ -77,6 +77,8 @@ public class Game : GLib.Application {
 
 		window.draw(()=>{
 			window.clear_background(RaylibOOP.Color.RAY_WHITE);
+			/* Draw Current Screen */
+			var screenRectangle = new Rectangle(0, 0, window.width, window.height);
 			switch(currentScreen) {
 				case GameScreen.LOGO: {
 					Font.DEFAULT.draw_text("LOGO SCREEN", new Vector2(20, 20), 40, null, Color.LIGHT_GRAY);
@@ -84,7 +86,21 @@ public class Game : GLib.Application {
 					break;
 				}
 				case GameScreen.TITLE: {
-					/* Shapes.Rectangle needs to be implemented to continue... */
+					screenRectangle.draw(Color.GREEN, null, null);
+					Font.DEFAULT.draw_text("TITLE SCREEN", new Vector2(20, 20), 40, null, Color.DARK_GREEN);
+					Font.DEFAULT.draw_text("PRESS ENTER or TAP to JUMP to GAMEPLAY SCREEN", new Vector2(120, 220), 20, null, Color.DARK_GREEN);
+					break;
+				}
+				case GameScreen.GAMEPLAY: {
+					screenRectangle.draw(Color.PURPLE, null, null);
+					Font.DEFAULT.draw_text("GAMEPLAY SCREEN", new Vector2(20, 20), 40, null, Color.MAROON);
+					Font.DEFAULT.draw_text("PRESS ENTER or TAP to JUMP to ENDING SCREEN", new Vector2(130, 220), 20, null, Color.MAROON);
+					break;
+				}
+				case GameScreen.ENDING: {
+					screenRectangle.draw(Color.BLUE, null, null);
+					Font.DEFAULT.draw_text("ENDING SCREEN", new Vector2(20, 20), 40, null, Color.DARK_BLUE);
+					Font.DEFAULT.draw_text("PRESS ENTER or TAP to RETURN to TITLE SCREEN", new Vector2(120, 220), 20, null, Color.DARK_BLUE);
 					break;
 				}
 			}
