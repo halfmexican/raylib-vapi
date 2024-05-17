@@ -146,4 +146,11 @@ if get_option('examples') == true
 			'src/examples/template.vala',
 		],
 	)
+	executable(
+		'draw_line',
+		dependencies: [raylib_oop_dep],
+		sources: [
+			'src/examples/misc/draw_line.vala',
+		],
+	)
 endif
