@@ -23,11 +23,19 @@ namespace RaylibOOP {
 			*/
 			public static void draw_strip(Vector2[] points, Color color) {
 				/* Create an array containing the Vector2 object's internal raylib struct (iVector) */
-				var v = new Array<Raylib.Vector2>();
+				/* For the future: Using a normal array rather than the GLib.Array object due to
+				 * compilation failures on (stable). If the vala compilers updates there, change this
+				 * to a GLib.Array object to reduce code size. */
+				Raylib.Vector2[] v = new Raylib.Vector2[1];
+				int vsize = 0;
 				foreach (var i in points) {
-					v.append_val(i.iVector);
+					vsize++;
+					int element = vsize-1;
+					v.resize(vsize);
+					v[element].x = i.iVector.x;
+					v[element].y = i.iVector.y;
 				}
-				Raylib.draw_line_strip(v.steal(), color.iColor);
+				Raylib.draw_line_strip(v, color.iColor);
 			}
 			/**
 			* Draw line segment cubic-bezier in-out interpolation
