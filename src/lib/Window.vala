@@ -261,27 +261,6 @@ namespace RaylibOOP {
 			Raylib.end_drawing();
 		}
 		/**
-		* Begin 2D mode with custom camera (2D)
-		*/
-		public void begin_2D(Raylib.Camera2D camera) {
-			Raylib.begin_mode_2D(camera);
-			return;
-		}
-		/**
-		* Ends 2D mode with custom camera
-		*/
-		public void end_2D() {
-			Raylib.end_mode_2D();
-		}
-		/**
-		* 2D Mode
-		*/
-		public void 2D(Raylib.Camera2D camera, Func func) {
-			this.begin_2D(camera);
-			func(null);
-			this.end_2D();
-		}
-		/**
 		* Set background color (framebuffer clear color)
 		*/
 		public void clear_background(Color color) {

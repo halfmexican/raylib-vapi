@@ -4,6 +4,7 @@ raylib_oop_src = [
 	'src/lib/Window.vala',
 	'src/lib/Color.vala',
 	'src/lib/Util.vala',
+	'src/lib/2DCamera.vala',
 	'src/lib/Audio/Types.vala',
 	'src/lib/Audio/Music.vala',
 	'src/lib/Audio/Sound.vala',
