@@ -184,7 +184,7 @@ namespace Raylib {
     }
 
     [SimpleType]
-    [CCode (cname = "Image")]
+    [CCode (cname = "Image", free_function = "UnloadImage")]
     public struct Image {
         void* data;
 
@@ -207,7 +207,7 @@ namespace Raylib {
     }
 
     [SimpleType]
-    [CCode (cname = "Texture2D")]
+    [CCode (cname = "Texture2D", free_function = "UnloadTexture")]
     public struct Texture2D {
         public uint id;                // OpenGL texture id
         public int width;              // Texture base width
@@ -238,7 +238,7 @@ namespace Raylib {
     }
 
     [SimpleType]
-    [CCode (cname = "RenderTexture2D")]
+    [CCode (cname = "RenderTexture2D", free_function = "UnloadRenderTexture")]
     public struct RenderTexture2D : RenderTexture {
         public uint id;                           // OpenGL framebuffer object id
 
@@ -270,7 +270,7 @@ namespace Raylib {
     }
 
     [SimpleType]
-    [CCode (cname = "Font")]
+    [CCode (cname = "Font", free_function = "UnloadFont")]
     public struct Font {
         public int baseSize;                    // Base size (default chars height)                                     // vala-lint=naming-convention
         public int glyphCount;                  // Number of glyph characters                                           // vala-lint=naming-convention
@@ -314,7 +314,7 @@ namespace Raylib {
     }
 
     [SimpleType]
-    [CCode (cname = "Mesh")]
+    [CCode (cname = "Mesh", free_function = "UnloadMesh")]
     public struct Mesh {
         public int vertexCount;                 // Number of vertices stored in arrays                                                          // vala-lint=naming-convention
         public int triangleCount;               // Number of triangles stored (indexed or not)                                                  // vala-lint=naming-convention
@@ -340,7 +340,7 @@ namespace Raylib {
     }
 
     [SimpleType]
-    [CCode (cname = "Shader")]
+    [CCode (cname = "Shader", free_function = "UnloadShader")]
     public struct Shader {
         public uint id;                       // Shader program id
         public unowned int[] locs;            // Shader locations array (RL_MAX_SHADER_LOCATIONS)
@@ -356,7 +356,7 @@ namespace Raylib {
     }
 
     [SimpleType]
-    [CCode (cname = "Material")]
+    [CCode (cname = "Material", free_function = "UnloadMaterial")]
     public struct Material {
         unowned Shader shader;          // Material shader
         unowned MaterialMap[] maps;     // Material maps array (MAX_MATERIAL_MAPS)
@@ -379,7 +379,7 @@ namespace Raylib {
     }
 
     [SimpleType]
-    [CCode (cname = "Model")]
+    [CCode (cname = "Model", free_function = "UnloadModel")]
     public struct Model {
         public Matrix transform;                // Local transform matrix
 
@@ -396,7 +396,7 @@ namespace Raylib {
     }
 
     [SimpleType]
-    [CCode (cname = "ModelAnimation")]
+    [CCode (cname = "ModelAnimation", free_function = "UnloadModelAnimation")]
     public struct ModelAnimation {
         public int boneCount;                   // Number of bones                                                              // vala-lint=naming-convention
         public int frameCount;                  // Number of animation frames                                                   // vala-lint=naming-convention
@@ -428,7 +428,7 @@ namespace Raylib {
     }
 
     [SimpleType]
-    [CCode (cname = "Wave")]
+    [CCode (cname = "Wave", free_function = "UnloadWave")]
     public struct Wave {
         public uint frameCount;         // Total number of frames (considering channels)                                // vala-lint=naming-convention
         public uint sampleRate;         // Frequency (samples per second)                                               // vala-lint=naming-convention
@@ -446,7 +446,7 @@ namespace Raylib {
     public struct AudioProcessor { }
 
     [SimpleType]
-    [CCode (cname = "AudioStream")]
+    [CCode (cname = "AudioStream", free_function = "UnloadAudioStream")]
     public struct AudioStream {
         public AudioBuffer buffer;          // Pointer to internal data used by the audio system
         public AudioProcessor processor;    // Pointer to internal data processor, useful for audio effects
@@ -457,14 +457,14 @@ namespace Raylib {
     }
 
     [SimpleType]
-    [CCode (cname = "Sound")]
+    [CCode (cname = "Sound", free_function = "UnloadSound")]
     public struct Sound {
         public AudioStream stream;      // Audio stream
         public uint frameCount;         // Total number of frames (considering channels)                                // vala-lint=naming-convention
     }
 
     [SimpleType]
-    [CCode (cname = "Music")]
+    [CCode (cname = "Music", free_function = "UnloadMusicStream")]
     public struct Music {
         public AudioStream stream;      // Audio stream
         public uint frameCount;         // Total number of frames (considering channels)                                // vala-lint=naming-convention
@@ -490,7 +490,7 @@ namespace Raylib {
     }
 
     [SimpleType]
-    [CCode (cname = "VrStereoConfig")]
+    [CCode (cname = "VrStereoConfig", free_function = "UnloadVrStereoConfig")]
     public struct VrStereoConfig {
         public Matrix projection[2];           // VR projection matrices (per eye)
         public Matrix viewOffset[2];           // VR view offset matrices (per eye)                                     // vala-lint=naming-convention
