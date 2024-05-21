@@ -33,7 +33,7 @@ namespace RaylibOOP {
 			func(null);
 			this.end_draw();
 		}
-		
+
 		/* Properties */
 		/**
 		* Offset of the camera

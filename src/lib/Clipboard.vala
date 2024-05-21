@@ -1,18 +1,18 @@
 namespace RaylibOOP {
-	public class Clipboard : GLib.Object {
+	public class Clipboard {
 		private Clipboard() {
 			return;
 		}
 		/**
 		* Get clipboard text content
 		*/
-		public new static string get() {
+		public static string get() {
 			return(Raylib.get_clipboard_text());
 		}
 		/**
 		* Set clipboard text content
 		*/
-		public new static void set(string text) {
+		public static void set(string text) {
 			Raylib.set_clipboard_text(text);
 		}
 	}
