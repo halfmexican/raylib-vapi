@@ -10,13 +10,20 @@ namespace RaylibOOP {
 			}
 			/* Methods */
 			/**
-			* Draw line.
+			* Draw basic line.
 			*/
-			public static void draw(Vector2 startPosition, Vector2 endPosition, float? thickness, Color color) {
+			public static void draw(Vector2 startPosition, Vector2 endPosition, Color color) {
+				Raylib.draw_line((int)startPosition.x, (int)startPosition.y, (int)endPosition.x, (int)endPosition.y, color.iColor);
+			}
+			/**
+			* Draw line using gl lines.
+			*/
+			public static void draw_gl(Vector2 startPosition, Vector2 endPosition, float? thickness, Color color) {
 				if(thickness == null) {
-					thickness = 1;
+					Raylib.draw_line_vector(startPosition.iVector, endPosition.iVector, color.iColor);	
+				} else {
+					Raylib.draw_line_ext(startPosition.iVector, endPosition.iVector, thickness, color.iColor);
 				}
-				Raylib.draw_line_ext(startPosition.iVector, endPosition.iVector, thickness, color.iColor);
 			}
 			/**
 			* Draw lines sequence.
