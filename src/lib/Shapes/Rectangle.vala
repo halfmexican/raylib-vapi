@@ -16,17 +16,17 @@ namespace RaylibOOP {
 			/**
 			* Draws the rectangle.
 			*/
-			public void draw(Color color, Shapes.Vector2? position, float? rotation) {
-				Shapes.Vector2 p;
-				if(position == null) {
-					p = new Shapes.Vector2(iRectangle.x, iRectangle.y);
+			public void draw(Color color, Shapes.Vector2? origin, float? rotation) {
+				Shapes.Vector2 o;
+				if(origin == null) {
+					o = new Shapes.Vector2(0, 0);
 				} else {
-					p = position;
+					o = origin;
 				}
 				if(rotation == null) {
 					rotation = 0;
 				}
-				Raylib.draw_rectangle_pro(iRectangle, p.iVector, rotation, color.iColor);
+				Raylib.draw_rectangle_pro(iRectangle, o.iVector, rotation, color.iColor);
 				return;
 			}
 			/**
