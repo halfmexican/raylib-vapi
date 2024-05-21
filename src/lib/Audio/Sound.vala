@@ -2,7 +2,7 @@ namespace RaylibOOP {
 	namespace Audio {
 		public class Sound : GLib.Object {
 			/* Variables */
-			private Raylib.Sound sound;
+			private Raylib.Sound iSound;
 			private bool isPaused = false;
 			private float soundVolume = 1.0f;
 			private float soundPitch = 1.0f;
@@ -15,7 +15,7 @@ namespace RaylibOOP {
 				if(Raylib.is_audio_device_ready() == false) {
 					Raylib.init_audio_device();
 				}
-				this.sound = Raylib.load_sound(file);
+				this.iSound = Raylib.load_sound(file);
 			}
 			/**
 			* Load sound from memory
@@ -25,7 +25,7 @@ namespace RaylibOOP {
 					Raylib.init_audio_device();
 				}
 				Raylib.Wave wave = Raylib.load_wave_from_memory(fileType, bytes);
-				this.sound = Raylib.load_sound_from_wave(wave);
+				this.iSound = Raylib.load_sound_from_wave(wave);
 				Raylib.unload_wave(wave);
 			}
 			/**
@@ -35,7 +35,7 @@ namespace RaylibOOP {
 				if(Raylib.is_audio_device_ready() == false) {
 					Raylib.init_audio_device();
 				}
-				this.sound = Raylib.load_sound_alias(source);
+				this.iSound = Raylib.load_sound_alias(source);
 			}
 			/**
 			* Load sound from wave
@@ -44,18 +44,18 @@ namespace RaylibOOP {
 				if(Raylib.is_audio_device_ready() == false) {
 					Raylib.init_audio_device();
 				}
-				this.sound = Raylib.load_sound_from_wave(wave);
+				this.iSound = Raylib.load_sound_from_wave(wave);
 			}
 			/* Destroyer */
 			~Sound() {
-				Raylib.unload_sound(this.sound);
+				Raylib.unload_sound(this.iSound);
 			}
 			/* Methods */
 			/**
 			* Update sound buffer with new data
 			*/
 			public void update(void* data, int sampleCount) {
-				Raylib.update_sound(this.sound, data, sampleCount);
+				Raylib.update_sound(this.iSound, data, sampleCount);
 			}
 			/* Properties */
 			/**
@@ -63,14 +63,14 @@ namespace RaylibOOP {
 			*/
 			public bool playing {
 				get {
-					return(Raylib.is_sound_playing(this.sound));
+					return(Raylib.is_sound_playing(this.iSound));
 				}
 				set {
 					if(value == true) {
-						Raylib.play_sound(this.sound);
+						Raylib.play_sound(this.iSound);
 						isPaused = false;
 					} else {
-						Raylib.stop_sound(this.sound);
+						Raylib.stop_sound(this.iSound);
 					}
 
 				}
@@ -84,10 +84,10 @@ namespace RaylibOOP {
 				}
 				set {
 					if(value == true) {
-						Raylib.pause_sound(this.sound);
+						Raylib.pause_sound(this.iSound);
 						isPaused = true;
 					} else {
-						Raylib.resume_sound(this.sound);
+						Raylib.resume_sound(this.iSound);
 						isPaused = false;
 					}
 				}
@@ -106,7 +106,7 @@ namespace RaylibOOP {
 					} else if(volume < 0.0f) {
 						volume = 0.0f;
 					}
-					Raylib.set_sound_volume(this.sound, volume);
+					Raylib.set_sound_volume(this.iSound, volume);
 					this.soundVolume = volume;
 				}
 			}
@@ -124,7 +124,7 @@ namespace RaylibOOP {
 					} else if(pitch < 0.0f) {
 						pitch = 0.0f;
 					}
-					Raylib.set_sound_pitch(this.sound, pitch);
+					Raylib.set_sound_pitch(this.iSound, pitch);
 					this.soundPitch = pitch;
 				}
 			}
@@ -142,7 +142,7 @@ namespace RaylibOOP {
 					} else if(pan < 0.0f) {
 						pan = 0.0f;
 					}
-					Raylib.set_sound_pan(this.sound, pan);
+					Raylib.set_sound_pan(this.iSound, pan);
 					this.soundPan = pan;
 				}
 			}
