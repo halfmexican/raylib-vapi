@@ -3,7 +3,7 @@ namespace RaylibOOP {
 	namespace Audio {
 		public class Music : GLib.Object {
 			/* Variables */
-			private Raylib.Music track;
+			private Raylib.Music iMusic;
 			private bool isPaused = false;
 			private float trackVolume = 1.0f;
 			private float trackPitch = 1.0f;
@@ -16,7 +16,7 @@ namespace RaylibOOP {
 				if(is_audio_device_ready() == false) {
 					init_audio_device();
 				}
-				this.track = load_music_stream(file);
+				this.iMusic = load_music_stream(file);
 			}
 			/**
 			* Loads the track from memory.
@@ -25,18 +25,18 @@ namespace RaylibOOP {
 				if(is_audio_device_ready() == false) {
 					init_audio_device();
 				}
-				this.track = load_music_stream_from_memory(fileType, data);
+				this.iMusic = load_music_stream_from_memory(fileType, data);
 			}
 			/* Destroyer */
 			~Music() {
-				unload_music_stream(this.track);
+				unload_music_stream(this.iMusic);
 			}
 			/* Methods */
 			/**
 			* Updates buffers for music streaming
 			*/
 			public void update() {
-				update_music_stream(this.track);
+				update_music_stream(this.iMusic);
 			}
 			/* Properties */
 			/**
@@ -44,13 +44,13 @@ namespace RaylibOOP {
 			*/
 			public bool playing {
 				get {
-					return(is_music_stream_playing(this.track));
+					return(is_music_stream_playing(this.iMusic));
 				}
 				set {
 					if(value == true) {
-						play_music_stream(this.track);
+						play_music_stream(this.iMusic);
 					} else {
-						stop_music_stream(this.track);
+						stop_music_stream(this.iMusic);
 					}
 				}
 			}
@@ -64,10 +64,10 @@ namespace RaylibOOP {
 				set {
 					if(value == true) {
 						isPaused = true;
-						pause_music_stream(this.track);
+						pause_music_stream(this.iMusic);
 					} else {
 						isPaused = false;
-						resume_music_stream(this.track);
+						resume_music_stream(this.iMusic);
 					}
 				}
 			}
@@ -80,7 +80,7 @@ namespace RaylibOOP {
 				}
 				set {
 					this.trackPan = value;
-					set_music_pan(this.track, value);
+					set_music_pan(this.iMusic, value);
 				}
 			}
 			/**
@@ -92,7 +92,7 @@ namespace RaylibOOP {
 				}
 				set {
 					this.trackPitch = value;
-					set_music_pitch(this.track, value);
+					set_music_pitch(this.iMusic, value);
 				}
 			}
 			/**
@@ -111,7 +111,7 @@ namespace RaylibOOP {
 					} else if(f < 0.0f) {
 						f = 0.0f;
 					}
-					set_music_volume(this.track, f);
+					set_music_volume(this.iMusic, f);
 					this.trackVolume = f;
 				}
 			}
@@ -120,7 +120,7 @@ namespace RaylibOOP {
 			*/
 			public float timeLength {
 				get {
-					return(get_music_time_length(this.track));
+					return(get_music_time_length(this.iMusic));
 				}
 			}
 			/**
@@ -128,7 +128,7 @@ namespace RaylibOOP {
 			*/
 			public float timePlayed {
 				get {
-					return(get_music_time_played(this.track));
+					return(get_music_time_played(this.iMusic));
 				}
 			}
 		}
