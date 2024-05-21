@@ -37,6 +37,14 @@ namespace RaylibOOP {
 			this.iColor.b = color.b;
 			this.iColor.a = color.a;
 		}
+		/**
+		* Creates a faded color.
+		*/
+		public static Color fade(Color color, float alpha) {
+			var c = new Color.from_raylib_color(color.iColor);
+			c.a = (uint8)(alpha*255);
+			return(c);
+		}
 		/* Properties */
 		/**
 		* Red
