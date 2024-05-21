@@ -98,12 +98,12 @@ subdir('src/lib')
 
 # Raylib OOP Library
 raylib_oop_lib = shared_library(
-  'raylib_oop',
-  sources: raylib_oop_src,
-  dependencies: project_dependency,
+	'raylib_oop',
+	sources: raylib_oop_src,
+	dependencies: project_dependency,
 	install: true,
 	vala_args: ['--vapi-comments'],
-#	version: version,
+	version: version,
 	install_dir: [true, true, true],
 )
 
@@ -117,40 +117,7 @@ pkg.generate(
 raylib_oop_dep = declare_dependency(
 	link_with: raylib_oop_lib,
 	dependencies: project_dependency,
+	include_directories: ['.']
 )
 
-# Examples
-if get_option('examples') == true
-	executable(
-		'core_basic_window',
-		dependencies: [raylib_oop_dep],
-		sources: [
-			'src/examples/core/core_basic_window.vala',
-			'src/examples/meta/license.vala',
-			'src/examples/meta/version.vala',
-		],
-	)
-	executable(
-		'core_basic_screen_manager',
-		dependencies: [raylib_oop_dep],
-		sources: [
-			'src/examples/core/core_basic_screen_manager.vala',
-			'src/examples/meta/license.vala',
-			'src/examples/meta/version.vala',
-		],
-	)
-	executable(
-		'template',
-		dependencies: [raylib_oop_dep],
-		sources: [
-			'src/examples/template.vala',
-		],
-	)
-	executable(
-		'draw_line',
-		dependencies: [raylib_oop_dep],
-		sources: [
-			'src/examples/misc/draw_line.vala',
-		],
-	)
-endif
+subdir('src/examples')
